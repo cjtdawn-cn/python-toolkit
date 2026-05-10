@@ -181,3 +181,7 @@ if __name__ == "__main__":
 ## 📄 License
 
 MIT © [Cao Jiangtao](https://github.com/cjtdawn-cn)
+
+---
+
+> 💡 更多实用开发工具 → [AI Toolkit Zone](https://cjtdawn-cn.github.io/ai-toolkit-zone/)
