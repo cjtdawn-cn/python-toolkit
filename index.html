@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Toolkit — 实用Python脚本合集</title>
+<meta name="description" content="10个实用Python脚本：文件整理、批量重命名、二维码生成、密码生成、字数统计、爬虫、PDF合并、图片处理等">
+<link rel="canonical" href="https://cjtdawn-cn.github.io/python-toolkit/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6}
+header{background:#161b22;border-bottom:1px solid #30363d;padding:2rem;text-align:center}
+header h1{font-size:2rem;color:#79c0ff;margin-bottom:.5rem}
+header p{color:#8b949e}
+.container{max-width:900px;margin:0 auto;padding:2rem 1rem}
+.quickstart{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:1.5rem;margin:1.5rem 0}
+.quickstart code{background:#0d1117;padding:2px 6px;border-radius:4px;color:#79c0ff}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1.5rem 0}
+.tool-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:1.2rem}
+.tool-card h3{color:#79c0ff;font-size:1rem;margin-bottom:.3rem}
+.tool-card .desc{color:#8b949e;font-size:.85rem}
+.tool-card code{display:block;background:#0d1117;padding:.4rem .6rem;border-radius:4px;margin-top:.5rem;font-size:.8rem;color:#7ee787}
+.cta{text-align:center;margin:3rem 0;padding:2rem;background:linear-gradient(135deg,#1c2128,#161b22);border:1px solid #30363d;border-radius:8px}
+.cta a{display:inline-block;margin:.5rem;padding:.8rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600}
+.btn-primary{background:#238636;color:#fff}
+.btn-secondary{background:#21262d;color:#c9d1d9;border:1px solid #30363d}
+footer{text-align:center;padding:2rem;color:#8b949e;font-size:.85rem;border-top:1px solid #30363d}
+footer a{color:#58a6ff;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>🐍 Python Toolkit</h1>
+<p>10个实用Python脚本 · 零依赖 · 即开即用</p>
+</header>
+
+<div class="container">
+
+<div class="quickstart">
+<h3 style="color:#79c0ff;margin-bottom:.5rem">🚀 快速开始</h3>
+<code>git clone https://github.com/cjtdawn-cn/python-toolkit.git</code><br>
+<code>cd python-toolkit</code><br>
+<code>python3 file_organizer.py --help</code>
+<p style="margin-top:.8rem;color:#8b949e;font-size:.85rem">每个脚本独立运行，无外部依赖（除标注外）</p>
+</div>
+
+<div class="tool-grid">
+<div class="tool-card">
+<h3>📁 file_organizer.py</h3>
+<div class="desc">按类型自动整理文件夹</div>
+<code>python3 file_organizer.py ~/下载</code>
+</div>
+<div class="tool-card">
+<h3>✏️ batch_rename.py</h3>
+<div class="desc">批量重命名文件</div>
+<code>python3 batch_rename.py ./photos trip_</code>
+</div>
+<div class="tool-card">
+<h3>📱 qr_generator.py</h3>
+<div class="desc">二维码生成器</div>
+<code>pip install qrcode[pil]<br>python3 qr_generator.py "https://..."</code>
+</div>
+<div class="tool-card">
+<h3>🔐 password_gen.py</h3>
+<div class="desc">随机安全密码生成</div>
+<code>python3 password_gen.py 10</code>
+</div>
+<div class="tool-card">
+<h3>📊 text_counter.py</h3>
+<div class="desc">字数统计+词频分析</div>
+<code>python3 text_counter.py article.txt</code>
+</div>
+<div class="tool-card">
+<h3>🖼️ image_resizer.py</h3>
+<div class="desc">批量调整图片大小</div>
+<code>pip install Pillow<br>python3 image_resizer.py 800 600</code>
+</div>
+<div class="tool-card">
+<h3>🔄 csv_to_json.py</h3>
+<div class="desc">CSV转JSON格式</div>
+<code>python3 csv_to_json.py data.csv</code>
+</div>
+<div class="tool-card">
+<h3>🕷️ web_scraper.py</h3>
+<div class="desc">简单网页爬虫</div>
+<code>pip install requests bs4<br>python3 web_scraper.py URL</code>
+</div>
+<div class="tool-card">
+<h3>📄 pdf_merger.py</h3>
+<div class="desc">PDF合并工具</div>
+<code>pip install PyPDF2<br>python3 pdf_merger.py *.pdf</code>
+</div>
+<div class="tool-card">
+<h3>📝 markdown_to_html.py</h3>
+<div class="desc">Markdown转HTML</div>
+<code>python3 markdown_to_html.py README.md</code>
+</div>
+</div>
+
+<div class="cta">
+<h3>💡 更多开发工具和教程</h3>
+<a href="https://cjtdawn-cn.github.io/ai-toolkit-zone/" class="btn-primary">🔗 AI Toolkit Zone</a>
+<a href="https://cjtdawn-cn.github.io/awesome-ai-tools/" class="btn-secondary">🛠️ AI工具合集</a>
+</div>
+
+</div>
+
+<footer>
+<p>📧 cjtdawn@gmail.com | <a href="https://github.com/cjtdawn-cn/python-toolkit">GitHub</a></p>
+<p style="margin-top:.5rem">MIT License · Star ⭐</p>
+</footer>
+</body>
+</html>
