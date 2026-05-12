@@ -16,6 +16,7 @@
 | `web_scraper.py` | 简单网页爬虫 |
 | `pdf_merger.py` | PDF合并工具 |
 | `markdown_to_html.py` | Markdown转HTML |
+| `json_tool.py` | JSON格式化/校验/压缩 |
 
 ## 🚀 快速开始
 
@@ -174,6 +175,80 @@ def count(filepath):
 
 if __name__ == "__main__":
     count(sys.argv[1])
+```
+
+---
+
+## 6. json_tool.py — JSON工具
+
+```python
+#!/usr/bin/env python3
+"""JSON格式化/校验/压缩工具 — 管道友好，无外部依赖"""
+
+import sys
+import json
+
+def pretty(data, indent=2):
+    return json.dumps(data, indent=indent, ensure_ascii=False)
+
+def compact(data):
+    return json.dumps(data, separators=(',', ':'), ensure_ascii=False)
+
+def extract(data, key):
+    keys = key.split('.')
+    for k in keys:
+        if isinstance(data, list):
+            try:
+                data = data[int(k)]
+            except (IndexError, ValueError):
+                return f"Error: index '{k}' out of range"
+        else:
+            data = data.get(k)
+            if data is None:
+                return f"Error: key '{k}' not found"
+    return json.dumps(data, indent=2, ensure_ascii=False)
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="JSON工具：格式化/校验/压缩/提取")
+    parser.add_argument('file', nargs='?', default='-', help='JSON文件 (默认stdin)')
+    parser.add_argument('-c', '--compact', action='store_true', help='压缩为单行')
+    parser.add_argument('-t', '--indent', type=int, default=2, help='缩进空格数 (默认2)')
+    parser.add_argument('-k', '--key', help='提取指定键值 (如 "users.0.name")')
+    parser.add_argument('-v', '--validate', action='store_true', help='仅校验JSON')
+    args = parser.parse_args()
+
+    try:
+        src = sys.stdin if args.file == '-' else open(args.file, 'r', encoding='utf-8')
+        raw = src.read()
+        data = json.loads(raw)
+        if isinstance(src, type(sys.stdin)):
+            pass
+        else:
+            src.close()
+    except json.JSONDecodeError as e:
+        print(f"❌ JSON解析错误: {e}", file=sys.stderr)
+        sys.exit(1)
+    except FileNotFoundError:
+        print(f"❌ 文件未找到: {args.file}", file=sys.stderr)
+        sys.exit(1)
+
+    if args.validate:
+        print(f"✅ 有效JSON ({len(raw):,} bytes)")
+    elif args.key:
+        print(extract(data, args.key))
+    elif args.compact:
+        print(compact(data))
+    else:
+        print(pretty(data, args.indent))
+```
+
+**用法：**
+```bash
+cat data.json | python json_tool.py              # 格式化
+echo '{"a":1}' | python json_tool.py -c          # 压缩
+cat config.json | python json_tool.py -k server.port  # 提取
+cat data.json | python json_tool.py -v           # 校验
 ```
 
 ---
